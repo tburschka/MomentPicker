@@ -1,26 +1,27 @@
 {
-    "name"           : "MomentPicker",
-    "description"    : "A datepicker based on Moment.js and jQuery",
-    "homepage"       : "https://github.com/coma/MomentPicker",
-    "repository"     : "https://github.com/coma/MomentPicker",
+    "name"           : "MomentPickerFoundation",
+    "description"    : "A datepicker based on Moment.js and jQuery for Foundation",
+    "homepage"       : "https://github.com/tburschka/MomentPicker",
+    "repository"     : "https://github.com/tburschka/MomentPicker",
     "version"        : "1.4.0",
     "license"        : "MIT",
     "private"        : false,
     "authors"        : [
-        "Eduardo García Sanz <eduardo@comakai.com>"
+        "Eduardo García Sanz <eduardo@comakai.com>",
+        "Torsten Burschka <torsten.burschka@gmail.com"
     ],
     "devDependencies": {
-        "gulp"        : "^3.8",
-        "gulp-jshint" : "^1",
-        "gulp-qunit"  : "^1",
-        "gulp-sass"   : "^0",
-        "gulp-uglify" : "^1",
-        "run-sequence": "^0"
+        "grunt": "*",
+        "grunt-contrib-qunit": "*",
+        "grunt-contrib-jshint": "*",
+        "grunt-contrib-uglify": "*",
+        "grunt-contrib-compass": "*",
+        "load-grunt-tasks": "*"
     },
     "scripts"        : {
-        "postinstall": "npm install -g bower gulp && bower install",
+        "postinstall": "npm install -g bower grunt-cli && bower install",
         "pretest"    : "npm install",
-        "test"       : "gulp test",
-        "posttest"   : "gulp deploy"
+        "test"       : "grunt test",
+        "posttest"   : "grunt deploy"
     }
 }
