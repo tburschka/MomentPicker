@@ -240,7 +240,7 @@
             var renderMonths = function() {
 
                 var a = showedDate.clone().startOf('y');
-                var b = a.clone().add('M', 12);
+                var b = a.clone().add(12, 'M');
                 var html = '';
 
                 currentLevel.text(a.year());
@@ -262,7 +262,7 @@
                     var type = allowedMonth(a) ? 'a' : 'span';
 
                     html += '<' + type + ' data-month="' + a.format('M-YYYY') + '" class="' + classes.join(' ') + '">' + a.format('MMM') + '</' + type + '>';
-                    a.add('M', 1);
+                    a.add(1, 'M');
                 }
 
                 body.html(html);
@@ -272,7 +272,7 @@
             var renderDays = function() {
 
                 var a = showedDate.clone().startOf('w');
-                var b = a.clone().add('w', 1);
+                var b = a.clone().add(1, 'w');
                 var html = '<div class="week">';
 
                 currentLevel.text(showedDate.format('MMMM YYYY'));
@@ -280,13 +280,13 @@
                 while (a < b) {
 
                     html += '<span>' + a.format('ddd') + '</span>';
-                    a.add('d', 1);
+                    a.add(1, 'd');
                 }
 
                 html += '</div>';
 
                 a = showedDate.clone().startOf('M').startOf('w');
-                b = a.clone().add('d', 42);
+                b = a.clone().add(42, 'd');
                 html += '<div class="month">';
                 var isNext = false;
 
@@ -316,7 +316,7 @@
                     }
 
                     html += '<' + type + ' data-day="' + a.format('D-M-YYYY') + '" class="' + classes.join(' ') + '">' + a.date() + '</' + type + '>';
-                    a.add('d', 1);
+                    a.add(1, 'd');
                 }
 
                 html += '</div>';
@@ -364,7 +364,7 @@
                 render();
                 emit('showPrev');
             };
-            
+
             next.click(showNext);
             prev.click(showPrev);
 
