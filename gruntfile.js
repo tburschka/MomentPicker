@@ -37,6 +37,22 @@ module.exports = function(grunt) {
                     environment: 'production'
                 }
             }
+        },
+        watch: {
+            configFiles: {
+                files: [ 'gruntfile.js', 'package.json' ],
+                options: {
+                    reload: true
+                }
+            },
+            scripts: {
+                files: ['src/*.*'],
+                tasks: ['test', 'deploy'],
+                options: {
+                    interrupt: true,
+                    debounceDelay: 100
+                }
+            }
         }
     });
 
