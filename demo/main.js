@@ -1,4 +1,4 @@
 $(function() {
-
-    $('#picker').MomentPicker();
+    moment.locale('de');
+    $('.datepicker').MomentPicker();
 });

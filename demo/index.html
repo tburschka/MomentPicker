@@ -6,10 +6,24 @@
         <link rel="stylesheet" href="../dist/MomentPicker.css">
     </head>
     <body>
-        <div id="picker" class="picker"></div>
         <script src="../bower_components/jquery/dist/jquery.js"></script>
-        <script src="../bower_components/moment/moment.js"></script>
+        <script src="../bower_components/moment/min/moment-with-locales.js"></script>
         <script src="../dist/MomentPicker.js"></script>
         <script src="main.js"></script>
+        <table>
+            <thead>
+                <tr>
+                    <th width="350">DIV</th>
+                    <th width="350">INPUT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><div id="picker" class="datepicker" ></div></td>
+                    <td><input type="text"class="datepicker" /></td>
+                </tr>
+
+            </tbody>
+        </table>
     </body>
 </html>

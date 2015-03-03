@@ -1,26 +1,63 @@
-@charset 'UTF-8';
-
 @import "compass/css3";
 
-@import url(http://fonts.googleapis.com/css?family=Inder);
+$white       : #FFFFFF;
+$ghost       : #FAFAFA;
+$snow        : #F9F9F9;
+$vapor       : #F6F6F6;
+$white-smoke : #F5F5F5;
+$silver      : #EFEFEF;
+$smoke       : #EEEEEE;
+$gainsboro   : #DDDDDD;
+$iron        : #CCCCCC;
+$base        : #AAAAAA;
+$aluminum    : #999999;
+$jumbo       : #888888;
+$monsoon     : #777777;
+$steel       : #666666;
+$charcoal    : #555555;
+$tuatara     : #444444;
+$oil         : #333333;
+$jet         : #222222;
+$black       : #000000;
 
-body {
-  font-family: Inder, Arial, Helvetica, sans-serif;
-  background-color: #F0F2F5;
+// We use these as default colors throughout
+$primary-color: #008CBA;
+$secondary-color: #e7e7e7;
+$alert-color: #f04124;
+$success-color: #43AC6A;
+$warning-color: #f08a24;
+$info-color: #a0d3e8;
+
+$color-function-factor: -20%;
+
+// We use these to control button border styles.
+$button-border-width: 0;
+$button-border-style: solid;
+$primary-color-hover: scale-color($primary-color, $lightness: $color-function-factor);
+
+div.container {
+  position: absolute;
+  z-index: 999;
+  background-color: $steel;
+  width: 300px;
+  height: auto;
 }
 
-div.picker {
-  width: 20rem;
-  color: #34495e;
+div.momentpicker {
+  position: absolute;
+  z-index: 999;
+  width: 300px;
+  height: auto;
+  color: $primary-color-hover;
+  background-color: $white;
+  border: 1px solid $iron;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  border-radius: 4px;
   overflow: hidden;
-  @include box-shadow(0 -4px 0 rgba(0, 0, 0, 0.15) inset, 0 4px 0 rgba(0, 0, 0, 0.12));
 
   * {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -32,7 +69,7 @@ div.picker {
   }
 
   a, span {
-    color: #A4AEB9;
+    color: $oil;
   }
 
   a {
@@ -51,8 +88,8 @@ div.picker {
     font-size: 1.5em;
     height: 2em;
     line-height: 2em;
-    border-bottom: 4px solid #5BA0D0;
-    background-color: #4FC1E9;
+    border-bottom: 4px solid $primary-color-hover;
+    color: $primary-color;
 
     a {
       display: block;
@@ -60,7 +97,7 @@ div.picker {
       top: 0;
       bottom: 0;
       text-align: center;
-      color: #fff;
+      color: $primary-color;
 
       &.next, &.prev {
         width: 2em;
@@ -82,7 +119,7 @@ div.picker {
 
         &:after {
           left: 1em;
-          border-left-color: #fff;
+          border-left-color: $primary-color;
         }
       }
 
@@ -90,7 +127,7 @@ div.picker {
         left: 0;
 
         &:after {
-          border-right-color: #fff;
+          border-right-color: $primary-color;
         }
       }
 
@@ -103,27 +140,27 @@ div.picker {
 
   div.body {
     position: relative;
-    height: 15rem;
-    color: #A4AEB9;
-    background-color: #fff;
+    height: 13rem;
+    color: $oil;
 
     .current {
-      color: #A4AEB9;
-      background-color: #ffd;
+      color: $jumbo;
+      background-color: $snow;
     }
 
+
     .selected {
-      color: #fff;
-      background-color: #4FC1E9;
+      color: $white;
+      background-color: $primary-color;
     }
 
     span {
-      background-color: #eee;
+      background-color: $smoke;
     }
 
     div.week {
-      color: #4FC1E9;
-      background-color: #F6F8FA;
+      color: $oil;
+      background-color: $silver;
 
       span {
         line-height: 3em;
@@ -138,6 +175,7 @@ div.picker {
         line-height: 2em;
         width: (100% / 7);
       }
+
     }
 
     a, span {
@@ -147,7 +185,7 @@ div.picker {
       text-align: center;
 
       &.prev, &.next {
-        color: #ccc;
+        color: $iron;
       }
     }
 
