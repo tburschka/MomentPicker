@@ -1,4 +1,4 @@
-MomentPicker [![Build Status](https://travis-ci.org/coma/MomentPicker.png?branch=master)](https://travis-ci.org/coma/MomentPicker)
+MomentPicker
 ============
 
 A datepicker based on [Moment.js](http://momentjs.com/) and [jQuery](http://jquery.com/)
@@ -8,7 +8,7 @@ You can [change the default language](http://momentjs.com/docs/#/i18n/) (english
 How to use
 ----------
 
-The proper way to get it is through bower ```bower install MomentPicker```, but you can also clone this project or even download the minified version from the ```dist``` folder.
+The proper way to get it is through bower ```bower install MomentPickerFoundation```, but you can also clone this project or even download the minified version from the ```dist``` folder.
 
 After grabbing it, include the **css** (the one included here or your own) and the **js** (jQuery, Moment.js and MomentPicker).
 
