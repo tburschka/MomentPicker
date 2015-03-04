@@ -14,9 +14,7 @@
     $.fn[pluginName] = function(options) {
 
         var plugin = $(this).data(pluginName);
-
         if(plugin) {
-
             return plugin;
         }
 
@@ -28,6 +26,25 @@
             var selectedDate = showedDate.clone();
             var picker = $(this);
             var _level = settings.level;
+
+            if (picker.is('input[type="text"]') || picker.is('input[type="date"]')) {
+                var input = picker;
+                input.on('click focus', function() { showPicker(); });
+
+                var container = $('<div class="momentpicker">');
+                container.hide();
+                picker.after(container);
+                picker = container;
+                $(document).on('mousedown', function(e) {
+                    // if the target of the click isn't the container nor a descendant of the container
+                    if (!picker.is(e.target) && picker.has(e.target).length === 0)
+                    {
+                        picker.hide();
+                    }
+                });
+            } else {
+                picker.addClass("momentpicker");
+            }
 
             picker.html([
                 '<div class="header">',
@@ -45,7 +62,6 @@
             var currentLevel = header.children('a.current');
 
             var falsy = function() {
-
                 return false;
             };
 
@@ -58,23 +74,23 @@
                 getMin = falsy,
                 getMax = falsy;
 
+            var showPicker = function() {
+                if (input.val() !== "") {
+                    val(moment(input.val(), 'L'));
+                }
+                render(2);
+                picker.show();
+            };
+
             var setMin = function(o) {
-
                 if (o instanceof Function) {
-
                     getMin = o;
-
                 } else {
-
                     (function() {
-
                         var min = moment(o);
-
                         if (moment.isMoment(min)) {
-
                             min.startOf('day');
                             getMin = function() {
-
                                 return min.clone();
                             };
                         }
@@ -82,49 +98,34 @@
                 }
 
                 yearBeforeMin = function(year) {
-
                     return year < getMin().year();
                 };
 
                 monthBeforeMin = function(date) {
-
                     return date.clone().startOf('month') < getMin().startOf('month');
                 };
 
                 dayBeforeMin = function(date) {
-
                     return date < getMin();
                 };
 
                 var min = getMin();
-
                 if (min > selectedDate) {
-
                     val(min);
-
                 } else {
-
                     render();
                 }
             };
 
             var setMax = function(o) {
-
                 if (o instanceof Function) {
-
                     getMax = o;
-
                 } else {
-
                     (function() {
-
                         var max = moment(o);
-
                         if (moment.isMoment(max)) {
-
                             max.startOf('day');
                             getMax = function() {
-
                                 return max.clone();
                             };
                         }
@@ -132,98 +133,72 @@
                 }
 
                 yearAfterMax = function(year) {
-
                     return year > getMax().year();
                 };
 
                 monthAfterMax = function(date) {
-
                     return date.clone().startOf('month') > getMax().startOf('month');
                 };
 
                 dayAfterMax = function(date) {
-
                     return date > getMax();
                 };
 
                 var max = getMax();
 
                 if (max < selectedDate) {
-
                     val(max);
-
                 } else {
-
                     render();
                 }
             };
 
             var emit = function(name) {
-
                 var event = $.Event(name);
                 event.api = api;
                 picker.trigger(event);
             };
 
             var allowedYear = function(year) {
-
                 return !yearBeforeMin(year) && !yearAfterMax(year);
             };
 
             var allowedDay = function(date) {
-
                 return !dayBeforeMin(date) && !dayAfterMax(date);
             };
 
             var allowedMonth = function(date) {
-
                 return !monthBeforeMin(date) && !monthAfterMax(date);
             };
 
             var val = function() {
-
                 if (arguments.length > 0) {
-
                     var date = moment(arguments[0]);
-
                     if (date.isValid()) {
-
                         date.startOf('day');
-
                         if (allowedDay(date)) {
-
                             selectedDate = date;
                             emit('pick');
                             showedDate = selectedDate.clone();
                             render();
                         }
                     }
-
                     return api;
                 }
-
                 return selectedDate.clone();
             };
 
             var renderYears = function() {
-
                 var a = showedDate.year();
                 var b = a + 12;
                 var html = '';
-
                 currentLevel.text(a + ' - ' + (b - 1));
-
                 while (a < b) {
-
                     var classes = [];
-
                     if (a === today.year()) {
-
                         classes.push(settings.style.current);
                     }
-
                     if (a === selectedDate.year()) {
-
                         classes.push(settings.style.selected);
                     }
 
@@ -238,7 +213,6 @@
             };
 
             var renderMonths = function() {
-
                 var a = showedDate.clone().startOf('y');
                 var b = a.clone().add(12, 'M');
                 var html = '';
@@ -246,16 +220,12 @@
                 currentLevel.text(a.year());
 
                 while (a < b) {
-
                     var classes = [];
-
                     if (a.format('M-YYYY') === today.format('M-YYYY')) {
-
                         classes.push(settings.style.current);
                     }
 
                     if (a.format('M-YYYY') === selectedDate.format('M-YYYY')) {
-
                         classes.push(settings.style.selected);
                     }
 
@@ -270,7 +240,6 @@
             };
 
             var renderDays = function() {
-
                 var a = showedDate.clone().startOf('w');
                 var b = a.clone().add(1, 'w');
                 var html = '<div class="week">';
@@ -278,7 +247,6 @@
                 currentLevel.text(showedDate.format('MMMM YYYY'));
 
                 while (a < b) {
-
                     html += '<span>' + a.format('ddd') + '</span>';
                     a.add(1, 'd');
                 }
@@ -291,27 +259,19 @@
                 var isNext = false;
 
                 while (a < b) {
-
                     var classes =  [];
-
                     if (a.format('D-M-YYYY') === today.format('D-M-YYYY')) {
-
                         classes.push(settings.style.current);
                     }
-
                     if (a.format('D-M-YYYY') === selectedDate.format('D-M-YYYY')) {
 
                         classes.push(settings.style.selected);
                     }
 
                     var type = allowedDay(a) ? 'a' : 'span';
-
                     if (a.month() !== showedDate.month()) {
-
                         classes.push(isNext ? 'next' : 'prev');
-
                     } else {
-
                         isNext = true;
                     }
 
@@ -334,16 +294,13 @@
             var renderer = [renderYears, renderMonths, renderDays];
 
             var render = function() {
-
                 if (arguments.length > 0) {
-
                     _level = Math.max(arguments[0], settings.level);
                 }
 
                 picker.removeClass('top');
 
                 if (_level === settings.level) {
-
                     picker.addClass('top');
                 }
 
@@ -352,14 +309,12 @@
             };
 
             var showNext = function() {
-
                 showedDate.add(args[_level]);
                 render();
                 emit('showNext');
             };
 
             var showPrev = function() {
-
                 showedDate.subtract(args[_level]);
                 render();
                 emit('showPrev');
@@ -369,34 +324,31 @@
             prev.click(showPrev);
 
             currentLevel.click(function() {
-
                 render(Math.max(0, --_level));
             });
 
             body.on('click', 'a[data-year]', function() {
-
                 showedDate.year($(this).data('year'));
                 render(1);
             });
 
             body.on('click', 'a[data-month]', function() {
-
                 var date = moment($(this).data('month'), 'M-YYYY');
                 showedDate.month(date.month()).year(date.year());
                 render(2);
             });
 
             body.on('click', 'a[data-day]', function() {
-
                 val(moment($(this).data('day'), 'D-M-YYYY'));
+                if (input) {
+                    input.val(selectedDate.format('L'));
+                    picker.hide();
+                }
             });
 
             var min = function() {
-
                 if (arguments.length > 0) {
-
                     setMin(arguments[0]);
-
                     return api;
                 }
 
@@ -404,14 +356,10 @@
             };
 
             var max = function() {
-
                 if (arguments.length > 0) {
-
                     setMax(arguments[0]);
-
                     return api;
                 }
-
                 return getMax();
             };
 
@@ -427,12 +375,10 @@
             };
 
             if (settings.hasOwnProperty('min')) {
-
                 setMin(settings.min);
             }
 
             if (settings.hasOwnProperty('max')) {
-
                 setMax(settings.max);
             }
 
