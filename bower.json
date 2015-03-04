@@ -1,16 +1,17 @@
 {
-    "name"        : "MomentPicker",
+    "name"        : "MomentPickerFoundation",
     "main"        : "dist/MomentPicker.js",
-    "version"     : "1.4.0",
+    "version"     : "0.1.0",
     "license"     : "MIT",
-    "homepage"    : "https://github.com/coma/MomentPicker",
-    "repository"  : "https://github.com/coma/MomentPicker",
+    "homepage"    : "https://github.com/t.burschka/MomentPicker",
+    "repository"  : "https://github.com/t.burschka/MomentPicker",
     "authors"     : [
-        "Eduardo García Sanz <eduardo@comakai.com>"
+        "Eduardo García Sanz <eduardo@comakai.com>",
+        "Torsten Burschka <torsten.burschka@gmail.com>"
     ],
-    "description" : "A datepicker based on Moment.js and jQuery",
+    "description" : "A datepicker based on Moment.js and jQuery for Foundation",
     "keywords"    : [
-        "datepicker", "momentjs", "jquery"
+        "datepicker", "momentjs", "jquery", "foundation"
     ],
     "license"     : "MIT",
     "ignore"      : [
