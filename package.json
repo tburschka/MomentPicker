@@ -3,7 +3,7 @@
     "description"    : "A datepicker based on Moment.js and jQuery for Foundation.",
     "homepage"       : "https://github.com/tburschka/MomentPickerFoundation",
     "repository"     : "https://github.com/tburschka/MomentPickerFoundation",
-    "version"        : "0.1.0",
+    "version"        : "0.1.4",
     "license"        : "MIT",
     "private"        : false,
     "authors"        : [

@@ -200,3 +200,17 @@ div.momentpicker {
     pointer-events: none;
   }
 }
+
+// fix position in foundation grid
+.columns {
+  &> input {
+    &+.momentpicker {
+      margin-top: -1em;
+    }
+    &.error {
+      &+.momentpicker {
+        margin-top: 0;
+      }
+    }
+  }
+}
