@@ -2,8 +2,10 @@
 
     var pluginName = 'MomentPicker';
     var today = moment().startOf('day');
+    var currentLocale = navigator.language || navigator.userLanguage || 'en';
     var defaults = {
         date : today,
+        locale: currentLocale,
         level: 0,
         style: {
             selected: 'selected',
@@ -22,6 +24,11 @@
 
             var api;
             var settings = $.extend(true, {}, defaults, options);
+
+            // enforce locale
+            moment.locale(settings.locale);
+            settings.date.locale(settings.locale);
+
             var showedDate = settings.date;
             var selectedDate = showedDate.clone();
             var picker = $(this);
