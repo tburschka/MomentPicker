@@ -29,8 +29,8 @@ You can easily configure it by passing a plain js object to the constructor.
 $(function() {
     $('#picker').MomentPicker({
         date : moment(),
-        min  : moment().subtract('d', 10),
-        max  : moment().add('y', 1),
+        min  : moment().subtract(10, 'd'),
+        max  : moment().add(1, 'y'),
         level: 0,
         style: {
             selected: 'selected',
@@ -125,7 +125,7 @@ Renders the days's level (just a month, level 2).
 Events
 ------
 
-Events are a great way to interact with the plugin and add some custom funcionality in a decoupled way, like including some extra information and attaching some behaviours to date links.
+Events are a great way to interact with the plugin and add some custom functionality in a decoupled way, like including some extra information and attaching some behaviours to date links.
 
 **MomentPicker** uses the jQuery's trigger method to emit its events through the DOM. The context of every callback (this) will be the jQuery's picker instance and you can grab the api from the event object received as explained above.
 

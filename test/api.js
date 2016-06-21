@@ -4,19 +4,19 @@ test('api', function() {
 
     var config = {
         date: date,
-        min: date.clone().subtract('y', 1),
-        max: date.clone().add('y', 1)
+        min: date.clone().subtract(1, 'y'),
+        max: date.clone().add(1, 'y')
     };
 
     var picker = $('#picker').MomentPicker(config);
     var api = picker.data('MomentPicker');
-    var header = picker.children('div.header');
-    var body = picker.children('div.body');
+    var header = picker.children('div.mp-header');
+    var body = picker.children('div.mp-body');
 
     ok(body.find('[data-year="2015"]').is('a'));
     ok(body.find('[data-year="2016"]').is('span'));
 
-    api.max(config.max.add('y', 1));
+    api.max(config.max.add(1, 'y'));
 
     ok(body.find('[data-year="2015"]').is('a'));
     ok(body.find('[data-year="2016"]').is('a'));

@@ -17,8 +17,8 @@ test('config', function() {
 
     var picker = $('#picker').MomentPicker(config);
     var api = picker.data('MomentPicker');
-    var header = picker.children('div.header');
-    var body = picker.children('div.body');
+    var header = picker.children('div.mp-header');
+    var body = picker.children('div.mp-body');
 
     strictEqual(api.val().format(), date.format(), 'Initial date is correct.');
 

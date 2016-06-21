@@ -22,7 +22,7 @@ test('misc', function() {
 
     while (a < b) {
 
-        ok(picker.find('[data-day="' + a.format('D-M-YYYY') + '"]').hasClass('prev'), 'Days from prev month.');
+        ok(picker.find('[data-day="' + a.format('D-M-YYYY') + '"]').hasClass('mp-prev'), 'Days from prev month.');
         a.add('d', 1);
     }
 
@@ -37,7 +37,7 @@ test('misc', function() {
 
     while (a < b) {
 
-        ok(picker.find('[data-day="' + a.format('D-M-YYYY') + '"]').hasClass('next'), 'Days from next month.');
+        ok(picker.find('[data-day="' + a.format('D-M-YYYY') + '"]').hasClass('mp-next'), 'Days from next month.');
         a.add('d', 1);
     }
 });

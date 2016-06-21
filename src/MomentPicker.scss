@@ -43,7 +43,7 @@ div.container {
   height: auto;
 }
 
-div.momentpicker {
+div.mp {
   position: absolute;
   z-index: 999;
   width: 300px;
@@ -52,11 +52,7 @@ div.momentpicker {
   background-color: $white;
   border: 1px solid $iron;
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  @include user-select(none);
   overflow: hidden;
 
   * {
@@ -83,7 +79,7 @@ div.momentpicker {
     clear: both;
   }
 
-  div.header {
+  div.mp-header {
     position: relative;
     font-size: 1.5em;
     height: 2em;
@@ -99,7 +95,7 @@ div.momentpicker {
       text-align: center;
       color: $primary-color;
 
-      &.next, &.prev {
+      &.mp-next, &.mp-prev {
         width: 2em;
         overflow: hidden;
 
@@ -114,7 +110,7 @@ div.momentpicker {
         }
       }
 
-      &.next {
+      &.mp-next {
         right: 0;
 
         &:after {
@@ -123,7 +119,7 @@ div.momentpicker {
         }
       }
 
-      &.prev {
+      &.mp-prev {
         left: 0;
 
         &:after {
@@ -131,19 +127,19 @@ div.momentpicker {
         }
       }
 
-      &.current {
+      &.mp-current {
         right: 2em;
         left: 2em;
       }
     }
   }
 
-  div.body {
+  div.mp-body {
     position: relative;
     height: 13rem;
     color: $oil;
 
-    .current {
+    .mp-current {
       color: $jumbo;
       background-color: $snow;
     }
@@ -184,7 +180,7 @@ div.momentpicker {
       float: left;
       text-align: center;
 
-      &.prev, &.next {
+      &.mp-prev, &.mp-next {
         color: $iron;
       }
     }
@@ -195,7 +191,7 @@ div.momentpicker {
     }
   }
 
-  &.top div.header a.current {
+  &.top div.mp-header a.mp-current {
     cursor: default;
     pointer-events: none;
   }
@@ -204,11 +200,11 @@ div.momentpicker {
 // fix position in foundation grid
 .columns {
   &> input {
-    &+.momentpicker {
+    &+.mp {
       margin-top: -1em;
     }
     &.error {
-      &+.momentpicker {
+      &+.mp {
         margin-top: 0;
       }
     }

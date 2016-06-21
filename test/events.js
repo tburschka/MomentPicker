@@ -33,12 +33,12 @@ test('events', function() {
 
     picker
         .MomentPicker()
-        .find('div.body a:first')
+        .find('div.mp-body a:first')
         .click()
         .end()
-        .find('div.body a:first')
+        .find('div.mp-body a:first')
         .click()
         .end()
-        .find('div.body a:first')
+        .find('div.mp-body a:first')
         .click();
 });

@@ -3,15 +3,15 @@ test('basic', function() {
     var date = moment().startOf('day');
     var picker = $('#picker').MomentPicker();
     var api = picker.data('MomentPicker');
-    var header = picker.children('div.header');
-    var body = picker.children('div.body');
+    var header = picker.children('div.mp-header');
+    var body = picker.children('div.mp-body');
 
     ok(header.length === 1, 'Has a header.');
     ok(header.length === 1, 'Has a body.');
 
-    var next = header.children('a.next');
-    var prev = header.children('a.prev');
-    var current = header.children('a.current');
+    var next = header.children('a.mp-next');
+    var prev = header.children('a.mp-prev');
+    var current = header.children('a.mp-current');
 
     ok(next.length === 1, 'Header has a next button.');
     ok(prev.length === 1, 'Header has a prev button.');

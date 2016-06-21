@@ -38,7 +38,7 @@
                 var input = picker;
                 input.on('click focus', function() { showPicker(); });
 
-                var container = $('<div class="momentpicker">');
+                var container = $('<div class="mp">');
                 container.hide();
                 picker.after(container);
                 picker = container;
@@ -50,23 +50,23 @@
                     }
                 });
             } else {
-                picker.addClass("momentpicker");
+                picker.addClass("mp");
             }
 
             picker.html([
-                '<div class="header">',
-                    '<a class="prev"></a>',
-                    '<a class="current"></a>',
-                    '<a class="next"></a>',
+                '<div class="mp-header">',
+                    '<a class="mp-prev"></a>',
+                    '<a class="mp-current"></a>',
+                    '<a class="mp-next"></a>',
                 '</div>',
-                '<div class="body"></div>'
+                '<div class="mp-body"></div>'
             ].join(''));
 
-            var header = picker.children('div.header');
-            var body = picker.children('div.body');
-            var next = header.children('a.next');
-            var prev = header.children('a.prev');
-            var currentLevel = header.children('a.current');
+            var header = picker.children('div.mp-header');
+            var body = picker.children('div.mp-body');
+            var next = header.children('a.mp-next');
+            var prev = header.children('a.mp-prev');
+            var currentLevel = header.children('a.mp-current');
 
             var falsy = function() {
                 return false;
@@ -277,7 +277,7 @@
 
                     var type = allowedDay(a) ? 'a' : 'span';
                     if (a.month() !== showedDate.month()) {
-                        classes.push(isNext ? 'next' : 'prev');
+                        classes.push(isNext ? 'mp-next' : 'mp-prev');
                     } else {
                         isNext = true;
                     }
@@ -316,13 +316,17 @@
             };
 
             var showNext = function() {
-                showedDate.add(args[_level]);
+                var unit   = Object.keys(args[_level])[0],
+                    amount = args[_level][unit];
+                showedDate.add(amount, unit);
                 render();
                 emit('showNext');
             };
 
             var showPrev = function() {
-                showedDate.subtract(args[_level]);
+                var unit   = Object.keys(args[_level])[0],
+                    amount = args[_level][unit];
+                showedDate.subtract(amount, unit);
                 render();
                 emit('showPrev');
             };

@@ -1,10 +1,10 @@
 {
-    "name"        : "MomentPickerFoundation",
+    "name"        : "moment-picker-foundation",
     "main"        : "dist/MomentPicker.js",
-    "version"     : "0.1.5",
+    "version"     : "0.2.0",
     "license"     : "MIT",
-    "homepage"    : "https://github.com/t.burschka/MomentPickerFoundation",
-    "repository"  : "git://github.com/t.burschka/MomentPickerFoundation.git",
+    "homepage"    : "https://github.com/t.burschka/moment-picker-foundation",
+    "repository"  : "git://github.com/t.burschka/moment-picker-foundation.git",
     "authors"     : [
         "Torsten Burschka <torsten.burschka@gmail.com>"
     ],
@@ -12,7 +12,6 @@
     "keywords"    : [
         "datepicker", "momentjs", "jquery", "foundation"
     ],
-    "license"     : "MIT",
     "ignore"      : [
         "**/.*", "node_modules", "bower_components", "test", "tests"
     ],
