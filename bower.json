@@ -1,7 +1,7 @@
 {
     "name"        : "moment-picker-foundation",
     "main"        : "dist/MomentPicker.js",
-    "version"     : "0.2.0",
+    "version"     : "0.2.1",
     "license"     : "MIT",
     "homepage"    : "https://github.com/t.burschka/moment-picker-foundation",
     "repository"  : "git://github.com/t.burschka/moment-picker-foundation.git",
