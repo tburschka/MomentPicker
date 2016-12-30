@@ -3,13 +3,18 @@
     "description"    : "A datepicker based on Moment.js and jQuery for Foundation.",
     "homepage"       : "https://github.com/tburschka/moment-picker-foundation",
     "repository"     : "https://github.com/tburschka/moment-picker-foundation",
-    "version"        : "0.2.1",
+    "version"        : "0.3.0",
     "license"        : "MIT",
     "private"        : false,
     "authors"        : [
         "Torsten Burschka <torsten.burschka@gmail.com"
     ],
+    "dependencies": {
+        "jquery"  : ">=1.7",
+        "moment"  : "^2"
+    },
     "devDependencies": {
+        "qunitjs": "1.*",
         "grunt": "*",
         "grunt-contrib-qunit": "*",
         "grunt-contrib-jshint": "*",
@@ -19,7 +24,6 @@
         "load-grunt-tasks": "*"
     },
     "scripts"        : {
-        "postinstall": "npm install bower grunt-cli && node_modules/.bin/bower install",
         "pretest"    : "npm install",
         "test"       : "node_modules/.bin/grunt test",
         "posttest"   : "node_modules/.bin/grunt deploy"
